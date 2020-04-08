@@ -1,8 +1,12 @@
 package com.example.c0782918_w2020_mad3125_midterm;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -10,5 +14,22 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        getSupportActionBar().hide();
+
+        handler.sendEmptyMessageDelayed(101,5000);
+
     }
+
+    Handler handler = new Handler(){
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+
+            if(msg.what == 101){
+                Intent intent = new Intent(SplashActivity.this,PersonInformationEntryActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        };
+    };
 }
