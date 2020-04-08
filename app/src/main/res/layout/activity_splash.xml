@@ -4,6 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#A1887F"
     tools:context=".SplashActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="142dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="141dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="58dp"
+        android:text="Amanpreet Kaur"
+        android:textColor="#000A12"
+        android:textSize="50dp"
+        app:fontFamily="cursive"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="133dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="134dp"
+        android:layout_marginBottom="273dp"
+        android:text="C0782918"
+        android:textColor="#000A12"
+        android:textSize="35dp"
+        app:fontFamily="cursive"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
