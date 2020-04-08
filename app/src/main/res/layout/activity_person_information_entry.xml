@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="#D3B8AE"
+    android:background="#F1F4F4"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,35 +13,108 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="370dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="20dp"
-        android:text="Person Information Entry"
-        android:textAlignment="center"
-        android:textColor="#D3B8AE"
-        android:textSize="20dp"
-        android:background="#000A12"
-        app:fontFamily="sans-serif-condensed-medium"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:textAllCaps="true" />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            android:text="TAX FILING FORM"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:background="#000A12"
+            app:fontFamily="sans-serif-condensed-medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textAllCaps="true" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
             android:text="SIN No."
             android:textColor="#000A12"
             android:textSize="18dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTxtSin"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="166dp"
+            android:ems="10"
+            android:hint="Enter SIN No."
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtSin"
+                android:layout_width="145dp"
+                android:layout_height="25dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTxtFirstName"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="27dp"
+            android:ems="10"
+            android:hint="Enter First Name"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toStartOf="@+id/editTxtLastName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTxtSin">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtFirstName"
+                android:layout_width="145dp"
+                android:layout_height="25dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTxtLastName"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="49dp"
+            android:ems="10"
+            android:hint="Enter Last Name"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/editTxtFirstName"
+            app:layout_constraintTop_toBottomOf="@+id/editTxtSin">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtLastName"
+                android:layout_width="145dp"
+                android:layout_height="25dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:hint="Birth Date"
+            android:textColor="@color/colorPrimary"
+            android:textSize="22sp"
+            android:drawableLeft=
+            tools:layout_editor_absoluteX="110dp"
+            tools:layout_editor_absoluteY="194dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
