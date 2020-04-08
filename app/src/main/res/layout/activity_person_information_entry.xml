@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="#F1F4F4"
+    android:background="#EFDCD5"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,8 +35,8 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="37dp"
             android:text="SIN No."
             android:textColor="#000A12"
             android:textSize="18dp"
@@ -45,62 +45,63 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editTxtSin"
-            android:layout_width="145dp"
+            android:layout_width="299dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="166dp"
+            android:layout_marginTop="24dp"
             android:ems="10"
             android:hint="Enter SIN No."
             android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView4"
             app:layout_constraintTop_toBottomOf="@+id/textView3">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtSin"
-                android:layout_width="145dp"
+                android:layout_width="match_parent"
+                android:textColor="#000A12"
                 android:layout_height="25dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editTxtFirstName"
-            android:layout_width="145dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="45dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="27dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
             android:ems="10"
             android:hint="Enter First Name"
             android:inputType="textPersonName"
-            app:layout_constraintEnd_toStartOf="@+id/editTxtLastName"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTxtSin">
+            app:layout_constraintTop_toBottomOf="@+id/textView4">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtFirstName"
-                android:layout_width="145dp"
+                android:textColor="#000A12"
+                android:layout_width="match_parent"
                 android:layout_height="25dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editTxtLastName"
-            android:layout_width="145dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="27dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="49dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="20dp"
             android:ems="10"
             android:hint="Enter Last Name"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/editTxtFirstName"
-            app:layout_constraintTop_toBottomOf="@+id/editTxtSin">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTxtFirstName">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtLastName"
-                android:layout_width="145dp"
+                android:textColor="#000A12"
+                android:layout_width="match_parent"
                 android:layout_height="25dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -109,12 +110,163 @@
             android:id="@+id/txtDate"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="136dp"
             android:hint="Birth Date"
-            android:textColor="@color/colorPrimary"
-            android:textSize="22sp"
-            android:drawableLeft=
-            tools:layout_editor_absoluteX="110dp"
-            tools:layout_editor_absoluteY="194dp" />
+            android:textColor="#000A12"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageButton"
+            app:layout_constraintTop_toBottomOf="@+id/editTxtLastName" />
+
+        <TextView
+            android:id="@+id/textViewGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="53dp"
+            android:text="Gender"
+            android:textColor="#000A12"
+            android:textSize="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="39dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="75dp"
+            android:checkedButton="@+id/radioButtonMale"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewGender"
+            app:layout_constraintTop_toBottomOf="@+id/txtDate">
+
+            <RadioButton
+                android:id="@+id/radioButtonMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Male" />
+
+            <RadioButton
+                android:id="@+id/radioButtonFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Female" />
+
+            <RadioButton
+                android:id="@+id/radioButtonOther"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Other" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textViewGross"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="62dp"
+            android:text="Gross Income"
+            android:textColor="#000A12"
+            android:textSize="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTxtGrossIncome"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="49dp"
+            android:layout_marginEnd="25dp"
+            android:ems="10"
+            android:hint="Enter Gross Income "
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewGross"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtGrossIncome"
+                android:textColor="#000A12"
+                android:layout_width="240dp"
+                android:layout_height="25dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textViewRRSP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="69dp"
+            android:text="RRSP Contributed"
+            android:textColor="#000A12"
+            android:textSize="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewGross" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTxtRRSP"
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="25dp"
+            android:ems="10"
+            android:hint="Enter RRSP "
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewRRSP"
+            app:layout_constraintTop_toBottomOf="@+id/editTxtGrossIncome">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtRRSP"
+                android:textColor="#000A12"
+                android:layout_width="215dp"
+                android:layout_height="25dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="151dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="172dp"
+            android:layout_marginBottom="62dp"
+            android:text="Submit"
+            android:textColor="#FFFFFF"
+            android:background="#000A12"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTxtRRSP" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="41dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTxtLastName"
+            app:srcCompat="@drawable/calendar" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
