@@ -2,6 +2,7 @@ package com.example.c0782918_w2020_mad3125_midterm.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -35,5 +36,15 @@ public class TaxDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tax_detail);
 
         ButterKnife.bind(this);
+
+        Intent intent = getIntent();
+
+       // textViewSIN.setText(String.valueOf());
+
+
+
+
     }
+
 }
+

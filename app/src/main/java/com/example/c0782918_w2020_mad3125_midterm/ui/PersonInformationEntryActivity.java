@@ -21,8 +21,10 @@ import butterknife.OnClick;
 
 
 import com.example.c0782918_w2020_mad3125_midterm.R;
+import com.example.c0782918_w2020_mad3125_midterm.model.CRACustomer;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -56,6 +58,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
     TextView textViewRRSP;
     int age;
     Date birthDate;
+    CRACustomer customerData;
 
 
     @Override
@@ -89,21 +92,23 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
-                            Intent mIntent = new Intent(PersonInformationEntryActivity.this, TaxDetailActivity.class);
-
-                            startActivity(mIntent);
-
-                        }
-                    })
-                    .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    })
-                    .show();
-            ;}
-    } ;
+                                customerData = new CRACustomer();
+                                Bundle userBundle = new Bundle();
+                                userBundle.putSerializable("userBundle", (Serializable) customerData);
+                                Intent mIntent = new Intent(PersonInformationEntryActivity.this, TaxDetailActivity.class);
+                                mIntent.putExtra("customerObject", userBundle);
+                                startActivity(mIntent);
+                            }
+                        })
+                        .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .show();
+            }
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @OnClick(R.id.imageButtonDate)
