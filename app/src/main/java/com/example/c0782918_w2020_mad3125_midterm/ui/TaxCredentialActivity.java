@@ -34,15 +34,6 @@ import java.util.Date;
 
 public class TaxCredentialActivity extends AppCompatActivity {
 
-    /*private TextView textViewSIN;
-    private TextView textViewFirstName;
-    private TextView textViewLastName;
-    private TextView textViewDate;
-    private TextView textViewGrossIncome;
-    private TextView textViewRRSP;
-    private RadioButton radioButtonMale;
-    private RadioButton radioButtonFemale;
-    private RadioButton radioButtonOther;*/
 
     @BindView(R.id.txtSin)
     TextView textViewSIN;
@@ -82,19 +73,13 @@ public class TaxCredentialActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch(checkedId){
                     case R.id.radioButtonMale:
-                        Toast.makeText(TaxCredentialActivity.this, "Male", Toast.LENGTH_SHORT).show();
                         gender = "Male";
-                        // do operations specific to this selection
                         break;
                     case R.id.radioButtonFemale:
-                        Toast.makeText(TaxCredentialActivity.this, "Female", Toast.LENGTH_SHORT).show();
                         gender = "Female";
-                        // do operations specific to this selection
                         break;
                     case R.id.radioButtonOther:
-                        Toast.makeText(TaxCredentialActivity.this, "Other", Toast.LENGTH_SHORT).show();
                         gender = "Other";
-                        // do operations specific to this selection
                         break;
                 }
             }
