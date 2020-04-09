@@ -28,7 +28,7 @@ public class SplashActivity extends AppCompatActivity {
             super.handleMessage(msg);
 
             if(msg.what == 101){
-                Intent intent = new Intent(SplashActivity.this, PersonInformationEntryActivity.class);
+                Intent intent = new Intent(SplashActivity.this, TaxCredentialActivity.class);
                 startActivity(intent);
                 finish();
             }

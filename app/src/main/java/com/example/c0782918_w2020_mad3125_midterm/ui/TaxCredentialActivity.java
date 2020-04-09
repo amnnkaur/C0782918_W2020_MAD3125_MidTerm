@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -20,12 +19,10 @@ import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 
 import com.example.c0782918_w2020_mad3125_midterm.R;
 import com.example.c0782918_w2020_mad3125_midterm.model.CRACustomer;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.Serializable;
 import java.text.ParseException;
@@ -35,7 +32,7 @@ import java.time.Period;
 import java.util.Calendar;
 import java.util.Date;
 
-public class PersonInformationEntryActivity extends AppCompatActivity {
+public class TaxCredentialActivity extends AppCompatActivity {
 
     /*private TextView textViewSIN;
     private TextView textViewFirstName;
@@ -74,7 +71,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_person_information_entry);
+        setContentView(R.layout.activity_tax_credential);
 
         ButterKnife.bind(this);
 
@@ -85,17 +82,17 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch(checkedId){
                     case R.id.radioButtonMale:
-                        Toast.makeText(PersonInformationEntryActivity.this, "Male", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TaxCredentialActivity.this, "Male", Toast.LENGTH_SHORT).show();
                         gender = "Male";
                         // do operations specific to this selection
                         break;
                     case R.id.radioButtonFemale:
-                        Toast.makeText(PersonInformationEntryActivity.this, "Female", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TaxCredentialActivity.this, "Female", Toast.LENGTH_SHORT).show();
                         gender = "Female";
                         // do operations specific to this selection
                         break;
                     case R.id.radioButtonOther:
-                        Toast.makeText(PersonInformationEntryActivity.this, "Other", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TaxCredentialActivity.this, "Other", Toast.LENGTH_SHORT).show();
                         gender = "Other";
                         // do operations specific to this selection
                         break;
@@ -112,7 +109,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
         int mYear = c.get(Calendar.YEAR);
         int mMonth = c.get(Calendar.MONTH);
         int mDay = c.get(Calendar.DAY_OF_MONTH);
-        datePickerDialog = new DatePickerDialog(PersonInformationEntryActivity.this,
+        datePickerDialog = new DatePickerDialog(TaxCredentialActivity.this,
                 new DatePickerDialog.OnDateSetListener() {
 
                     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -166,7 +163,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
         } else if (textViewRRSP.getText().toString().isEmpty()) {
             textViewRRSP.setError("Please enter RRSP Contribution");
         }else{
-            AlertDialog.Builder alertBuilder = new AlertDialog.Builder(PersonInformationEntryActivity.this);
+            AlertDialog.Builder alertBuilder = new AlertDialog.Builder(TaxCredentialActivity.this);
             alertBuilder.setTitle("Tax Filed!");
             alertBuilder.setMessage("Are you sure to proceed with filing Tax?");
             alertBuilder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
@@ -182,7 +179,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                             Double.parseDouble(textViewRRSP.getText().toString()),gender,age);
                     Bundle myBundle = new Bundle();
                     myBundle.putSerializable("myBundle", (Serializable) customerData);
-                    Intent mIntent = new Intent(PersonInformationEntryActivity.this, TaxDetailActivity.class);
+                    Intent mIntent = new Intent(TaxCredentialActivity.this, TaxDetailActivity.class);
                     mIntent.putExtra("customerObject", myBundle);
                     startActivity(mIntent);
                 }
