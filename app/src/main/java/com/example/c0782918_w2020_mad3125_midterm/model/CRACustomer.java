@@ -190,6 +190,11 @@ public class CRACustomer
     }
 
     public double getCarryForwardRRSP() {
+
+        double carryFwdRRSP = this.rrspContributed;
+
+        this.carryForwardRRSP = getMaxRRSP() - carryFwdRRSP;
+
         return carryForwardRRSP;
     }
 
