@@ -57,6 +57,10 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
     @BindView(R.id.txtRRSP)
     TextView textViewRRSP;
     @BindView(R.id.radioGroup) RadioGroup radioGroup;
+    @BindView(R.id.radioButtonMale) RadioButton radioButtonMale;
+    @BindView(R.id.radioButtonFemale) RadioButton radioButtonFemale;
+    @BindView(R.id.radioButtonOther) RadioButton radioButtonOther;
+
     RadioButton rb;
     int age;
     Date birthDate;
@@ -91,7 +95,26 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                 customerData.setGender("Other");
                 break;
         }
+        radioButtonCheck();
 
+    }
+
+    public void radioButtonCheck(){
+
+        if(customerData.getGender().equals("Male"))
+        {
+            radioButtonMale.setChecked(true);
+            radioButtonFemale.setChecked(false);
+            radioButtonOther.setChecked(false);
+        }else if(customerData.getGender().equals("Female")){
+            radioButtonMale.setChecked(false);
+            radioButtonFemale.setChecked(true);
+            radioButtonOther.setChecked(false);
+        }else{
+            radioButtonMale.setChecked(false);
+            radioButtonFemale.setChecked(false);
+            radioButtonOther.setChecked(true);
+        }
     }
 
     @OnClick(R.id.btnSubmit)
@@ -104,7 +127,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
             textViewLastName.setError("Please enter Last Name");
         } else if (textViewDate.getText().toString().isEmpty()) {
             textViewDate.setError("Please enter Birth Date");
-        }else if(age<18){
+        }else if(age<18) {
             new MaterialAlertDialogBuilder(PersonInformationEntryActivity.this)
                     .setTitle("ERROR!")
                     .setMessage("You are not eligible to file Tax.")
@@ -116,6 +139,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                         }
                     })
                     .show();
+
         } else if (textViewGrossIncome.getText().toString().isEmpty()) {
             textViewGrossIncome.setError("Please enter Gross Income");
         } else if (textViewRRSP.getText().toString().isEmpty()) {
