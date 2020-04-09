@@ -53,14 +53,14 @@ public class TaxDetailActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void fetchedData(){
         Intent intent = getIntent();
-        if (intent.hasExtra("userObject")){
+        if (intent.hasExtra("customerObject")){
             fetchData = intent.getBundleExtra("customerObject");
             object = (CRACustomer) fetchData.getSerializable("myBundle");
 
             textViewSIN.setText(String.valueOf(object.getPersonSINNumber()));
             textViewName.setText(object.getFullName());
             textViewBirthDate.setText(String.valueOf(object.getBirthDate()));
-            textViewAge.setText(object.getAge());
+            textViewAge.setText(String.valueOf(object.getAge()));
             textViewGender.setText(String.valueOf(object.getGender()));
             textViewTaxDate.setText(String.valueOf(object.getTaxFilingDate()));
             textViewGross.setText(String.valueOf(object.getGrossIncome()));
