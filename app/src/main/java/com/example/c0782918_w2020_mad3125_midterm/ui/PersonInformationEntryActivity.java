@@ -105,6 +105,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
             ;}
     } ;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @OnClick(R.id.imageButtonDate)
     public void datePick(View view){
         DatePickerDialog datePickerDialog;
@@ -123,12 +124,26 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                         textViewDate.setText(sdf.toString());
                         try {
                             Date dateOfBirth = sdf.parse(textViewDate.getText().toString());
-                            LocalDate l1 = LocalDate.of(year, monthOfYear+1, dayOfMonth);
+                            LocalDate l1 = LocalDate.of(year, monthOfYear + 1, dayOfMonth);
                             LocalDate now1 = LocalDate.now();
                             Period diff1 = Period.between(l1, now1);
                             age = diff1.getYears();
                         } catch (ParseException e) {
                             e.printStackTrace();
+                        }
+
+                        if(age<18){
+                            new MaterialAlertDialogBuilder(PersonInformationEntryActivity.this)
+                                    .setTitle("ERROR!")
+                                    .setMessage("You are not eligible to file Tax.")
+                                    .setCancelable(false)
+                                    .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    })
+                                    .show();
                         }
                     }
                 }, mYear, mMonth, mDay);
