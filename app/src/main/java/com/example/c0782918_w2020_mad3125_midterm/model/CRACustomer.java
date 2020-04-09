@@ -217,7 +217,7 @@ public class CRACustomer implements Serializable {
 
     public double getCpp() {
 
-        double maxAnnualEarning = this.grossIncome;
+        double maxAnnualEarning = getGrossIncome();
 
         if (maxAnnualEarning < 57400.00) {
             this.cpp = maxAnnualEarning * (5.10 / 100);
@@ -236,7 +236,7 @@ public class CRACustomer implements Serializable {
 
     public double getEi() {
 
-        double maxInsurableIncome = this.grossIncome;
+        double maxInsurableIncome = getGrossIncome();
 
         if (maxInsurableIncome < 53100.00) {
             this.ei = maxInsurableIncome * (1.62 / 100);
@@ -265,8 +265,9 @@ public class CRACustomer implements Serializable {
     public double getCarryForwardRRSP() {
 
         double carryFwdRRSP = getRrspContributed();
+        double maxRRSP = getMaxRRSP();
 
-        this.carryForwardRRSP = getMaxRRSP() - carryFwdRRSP;
+        this.carryForwardRRSP = maxRRSP - carryFwdRRSP;
 
         this.carryForwardRRSP = Double.valueOf(df.format(carryFwdRRSP));
         return carryForwardRRSP;
@@ -278,7 +279,8 @@ public class CRACustomer implements Serializable {
 
     public double getMaxRRSP() {
 
-        this.maxRRSP = getGrossIncome() * 0.18;
+        double grossIncome = getGrossIncome();
+        this.maxRRSP = grossIncome * 0.18;
 
         this.maxRRSP = Double.valueOf(df.format(maxRRSP));
         return maxRRSP;
@@ -291,10 +293,16 @@ public class CRACustomer implements Serializable {
 
     public double getTotalTaxableIncome() {
 
-        if (getRrspContributed() > getMaxRRSP()) {
-            this.totalTaxableIncome = getGrossIncome() - (getCpp() + getEi() + getMaxRRSP());
+        double grossIncome = getGrossIncome();
+        double cpp = getCpp();
+        double ei = getEi();
+        double maxRRSP = getMaxRRSP();
+        double rrspContributed = getRrspContributed();
+
+        if (rrspContributed > maxRRSP) {
+            this.totalTaxableIncome = grossIncome - (cpp + ei + maxRRSP);
         } else {
-            this.totalTaxableIncome = getGrossIncome() - (getCpp() + getEi() + getRrspContributed());
+            this.totalTaxableIncome = grossIncome - (cpp + ei + rrspContributed);
         }
 
         this.totalTaxableIncome = Double.valueOf(df.format(totalTaxableIncome));
@@ -308,7 +316,10 @@ public class CRACustomer implements Serializable {
 
     public double getTotalTaxPayed() {
 
-        this.totalTaxPayed = getFederalTax() + getProvincialTax();
+        double fedTax = getFederalTax();
+        double proTax = getProvincialTax();
+
+        this.totalTaxPayed = fedTax + proTax;
 
         this.totalTaxPayed = Double.valueOf(df.format(totalTaxPayed));
         return totalTaxPayed;
