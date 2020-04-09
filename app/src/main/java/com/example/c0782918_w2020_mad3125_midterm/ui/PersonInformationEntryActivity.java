@@ -89,6 +89,18 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
             textViewLastName.setError("Please enter Last Name");
         } else if (textViewDate.getText().toString().isEmpty()) {
             textViewDate.setError("Please enter Birth Date");
+        }else if(age<18){
+            new MaterialAlertDialogBuilder(PersonInformationEntryActivity.this)
+                    .setTitle("ERROR!")
+                    .setMessage("You are not eligible to file Tax.")
+                    .setCancelable(false)
+                    .setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .show();
         } else if (textViewGrossIncome.getText().toString().isEmpty()) {
             textViewGrossIncome.setError("Please enter Gross Income");
         } else if (textViewRRSP.getText().toString().isEmpty()) {
@@ -147,19 +159,6 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
-                        if(age<18){
-                            new MaterialAlertDialogBuilder(PersonInformationEntryActivity.this)
-                                    .setTitle("ERROR!")
-                                    .setMessage("You are not eligible to file Tax.")
-                                    .setCancelable(false)
-                                    .setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            dialog.dismiss();
-                                        }
-                                    })
-                                    .show();
-                        }
                     }
                 }, mYear, mMonth, mDay);
         datePickerDialog.show();
