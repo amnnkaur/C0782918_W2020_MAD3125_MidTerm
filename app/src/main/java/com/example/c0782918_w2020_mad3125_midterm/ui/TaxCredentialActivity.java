@@ -66,8 +66,6 @@ public class TaxCredentialActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-
-
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -109,8 +107,8 @@ public class TaxCredentialActivity extends AppCompatActivity {
                             birthDate = formatter.parse(textViewDate.getText().toString());
                             LocalDate localDate = LocalDate.of(year, monthOfYear + 1, dayOfMonth);
                             LocalDate now = LocalDate.now();
-                            Period diff1 = Period.between(localDate, now);
-                            age = diff1.getYears();
+                            Period difference = Period.between(localDate, now);
+                            age = difference.getYears();
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }

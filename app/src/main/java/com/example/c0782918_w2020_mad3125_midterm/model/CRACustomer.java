@@ -179,7 +179,7 @@ public class CRACustomer implements Serializable {
 
     public double getProvincialTax() {
 
-        Double firstTaxRate = 0.0505, secondTaxRate = 0.0915, thirdTaxRate = 0.1116, fourthTaxRate = 0.1216, fifthTaxRate = 0.1316;
+       /* Double firstTaxRate = 0.0505, secondTaxRate = 0.0915, thirdTaxRate = 0.1116, fourthTaxRate = 0.1216, fifthTaxRate = 0.1316;
         Double firstBaseAmount = 0.0, secondBaseAmount = (43906 - 10582.00), thirdBaseAmount = (87813 - 43906.00), fourthBaseAmount = (150000 - 87813.00), fifthBaseAmount = (220000 - 150000.00);
 
 
@@ -203,9 +203,10 @@ public class CRACustomer implements Serializable {
         }else{
             this.provincialTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + (thirdBaseAmount * secondTaxRate) + (fourthBaseAmount * thirdTaxRate) + (fifthBaseAmount * fourthTaxRate) + ((income - 220000) * fifthTaxRate);
 
-        }
+        }*/
 
 
+       this.provincialTax = provincialTaxCalculate();
         this.provincialTax = Double.valueOf(df.format(provincialTax));
         return provincialTax;
 
@@ -327,6 +328,38 @@ public class CRACustomer implements Serializable {
 
     public void setTotalTaxPayed(double totalTaxPayed) {
         this.totalTaxPayed = totalTaxPayed;
+    }
+
+    public double provincialTaxCalculate(){
+        double calculatedProTax;
+
+        Double firstTaxRate = 0.0505, secondTaxRate = 0.0915, thirdTaxRate = 0.1116, fourthTaxRate = 0.1216, fifthTaxRate = 0.1316;
+        Double firstBaseAmount = 0.0, secondBaseAmount = (43906 - 10582.00), thirdBaseAmount = (87813 - 43906.00), fourthBaseAmount = (150000 - 87813.00), fifthBaseAmount = (220000 - 150000.00);
+
+
+        double income = getTotalTaxableIncome();
+
+        if(income < 10582) {
+            calculatedProTax = firstBaseAmount ;
+
+        }else if(income < 43906 && income >= 10582.01){
+            calculatedProTax = firstBaseAmount + ((income - 10582) * firstTaxRate);
+
+        }else if(income < 87813 && income >= 43906.01){
+            calculatedProTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + ((income-43906) * secondTaxRate);
+
+        }else if(income < 150000 && income >= 87813.01){
+            calculatedProTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + (thirdBaseAmount * secondTaxRate) + ((income-87813) * thirdTaxRate);
+
+        }else if(income < 220000 && income >= 150000.01){
+            calculatedProTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + (thirdBaseAmount * secondTaxRate) + (fourthBaseAmount * thirdTaxRate) + ((income-150000) * fourthTaxRate);
+
+        }else{
+            calculatedProTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + (thirdBaseAmount * secondTaxRate) + (fourthBaseAmount * thirdTaxRate) + (fifthBaseAmount * fourthTaxRate) + ((income - 220000) * fifthTaxRate);
+
+        }
+
+        return calculatedProTax;
     }
 
 }
