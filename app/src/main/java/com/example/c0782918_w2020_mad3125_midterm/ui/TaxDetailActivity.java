@@ -41,11 +41,16 @@ public class TaxDetailActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
+        fetchedData();
 
     }
 
     public void fetchedData(){
-        
+        Intent intent = getIntent();
+        if (intent.hasExtra("userObject")){
+            fetchData = intent.getBundleExtra("customerObject");
+            object = (CRACustomer) fetchData.getSerializable("myBundle");
+        }
     }
 
 }
