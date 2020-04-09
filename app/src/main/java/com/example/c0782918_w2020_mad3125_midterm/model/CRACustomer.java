@@ -97,8 +97,6 @@ public class CRACustomer implements Serializable {
     }
 
     public String getGender() {
-
-
         return gender;
     }
 
@@ -138,7 +136,7 @@ public class CRACustomer implements Serializable {
 
     public double getFederalTax() {
 
-        Double firstTaxRate = 0.15, secondTaxRate = 0.205, thirdTaxRate = 0.26, fourthTaxRate = 0.29, fifthTaxRate = 0.33;
+        /*Double firstTaxRate = 0.15, secondTaxRate = 0.205, thirdTaxRate = 0.26, fourthTaxRate = 0.29, fifthTaxRate = 0.33;
         Double firstBaseAmount = 0.0, secondBaseAmount = (47630 - 12069.00), thirdBaseAmount = (95259 - 47630.00), fourthBaseAmount = (147667 - 95259.00), fifthBaseAmount = (210371 - 147667.00);
 
         Double income = getTotalTaxableIncome();
@@ -168,7 +166,8 @@ public class CRACustomer implements Serializable {
             this.federalTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + (thirdBaseAmount * secondTaxRate) + (fourthBaseAmount * thirdTaxRate) + (fifthBaseAmount * fourthTaxRate) + ((income - 210371) * fifthTaxRate);
 
         }
-
+*/
+        this.federalTax = federalTaxCalculate();
         this.federalTax = Double.valueOf(df.format(federalTax));
         return federalTax;
     }
@@ -218,14 +217,15 @@ public class CRACustomer implements Serializable {
 
     public double getCpp() {
 
-        double maxAnnualEarning = getGrossIncome();
+       /* double maxAnnualEarning = getGrossIncome();
 
         if (maxAnnualEarning < 57400.00) {
             this.cpp = maxAnnualEarning * (5.10 / 100);
         } else {
             this.cpp = 57400.00 * (5.10 / 100);
         }
-
+*/
+        this.cpp = calculateCPP();
         this.cpp = Double.valueOf(df.format(cpp));
         return cpp;
 
@@ -237,14 +237,15 @@ public class CRACustomer implements Serializable {
 
     public double getEi() {
 
-        double maxInsurableIncome = getGrossIncome();
+        /*double maxInsurableIncome = getGrossIncome();
 
         if (maxInsurableIncome < 53100.00) {
             this.ei = maxInsurableIncome * (1.62 / 100);
         } else {
             this.ei = 53100.00 * (1.62 / 100);
-        }
+        }*/
 
+        this.ei = eiCalculate();
         this.ei = Double.valueOf(df.format(ei));
         return ei;
     }
@@ -358,8 +359,72 @@ public class CRACustomer implements Serializable {
             calculatedProTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + (thirdBaseAmount * secondTaxRate) + (fourthBaseAmount * thirdTaxRate) + (fifthBaseAmount * fourthTaxRate) + ((income - 220000) * fifthTaxRate);
 
         }
-
         return calculatedProTax;
     }
 
+    public double federalTaxCalculate() {
+
+        double calculatedFedTax;
+
+        Double firstTaxRate = 0.15, secondTaxRate = 0.205, thirdTaxRate = 0.26, fourthTaxRate = 0.29, fifthTaxRate = 0.33;
+        Double firstBaseAmount = 0.0, secondBaseAmount = (47630 - 12069.00), thirdBaseAmount = (95259 - 47630.00), fourthBaseAmount = (147667 - 95259.00), fifthBaseAmount = (210371 - 147667.00);
+
+        Double income = getTotalTaxableIncome();
+
+        if (income <= 12069) {
+
+            calculatedFedTax = firstBaseAmount ;
+
+        } else if (income > 12069.01 && income <= 47630) {
+
+            calculatedFedTax = firstBaseAmount + ((income - 12069) * firstTaxRate);
+
+        } else if (income > 47630.01 && income <= 95259) {
+
+            calculatedFedTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + ((income-47630) * secondTaxRate);
+
+        } else if (income > 95259.01 && income <= 147667) {
+
+            calculatedFedTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + (thirdBaseAmount * secondTaxRate) + ((income-95259) * thirdTaxRate);
+
+        }else if (income > 147667.01 && income <= 210371) {
+
+            calculatedFedTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + (thirdBaseAmount * secondTaxRate) + (fourthBaseAmount * thirdTaxRate) + ((income-147667) * fourthTaxRate);
+
+        } else {
+
+            calculatedFedTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + (thirdBaseAmount * secondTaxRate) + (fourthBaseAmount * thirdTaxRate) + (fifthBaseAmount * fourthTaxRate) + ((income - 210371) * fifthTaxRate);
+
+        }
+
+        return calculatedFedTax;
+    }
+
+    public double calculateCPP(){
+        double calculatedCPP;
+
+        double maxAnnualEarning = getGrossIncome();
+
+        if (maxAnnualEarning < 57400.00) {
+            calculatedCPP = maxAnnualEarning * (5.10 / 100);
+        } else {
+            calculatedCPP = 57400.00 * (5.10 / 100);
+        }
+
+        return calculatedCPP;
+    }
+
+    public double eiCalculate(){
+        double calculatedEI;
+
+        double maxInsurableIncome = getGrossIncome();
+
+        if (maxInsurableIncome < 53100.00) {
+            calculatedEI = maxInsurableIncome * (1.62 / 100);
+        } else {
+            calculatedEI = 53100.00 * (1.62 / 100);
+        }
+        return calculatedEI;
+    }
+    
 }
