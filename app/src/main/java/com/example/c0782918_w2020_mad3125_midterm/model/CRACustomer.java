@@ -149,10 +149,10 @@ public class CRACustomer
 
     public double getCpp() {
 
-        double maxGrossCpp = this.grossIncome;
-        
-        if(maxGrossCpp < 57400.00){
-            this.cpp = maxGrossCpp * (5.10/100);
+        double maxAnnualEarning = this.grossIncome;
+
+        if(maxAnnualEarning < 57400.00){
+            this.cpp = maxAnnualEarning * (5.10/100);
         }
         else{
             this.cpp = 57400.00 * (5.10/100);
@@ -166,6 +166,14 @@ public class CRACustomer
     }
 
     public double getEi() {
+
+        double maxInsurableIncome = this.grossIncome;
+
+        if (maxInsurableIncome <53100.00){
+            this.ei = maxInsurableIncome * (1.62/100);
+        }else{
+            this.ei = 53100.00 * (1.62/100);
+        }
         return ei;
     }
 
