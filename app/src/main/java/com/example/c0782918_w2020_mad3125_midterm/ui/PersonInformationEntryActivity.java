@@ -1,18 +1,34 @@
 package com.example.c0782918_w2020_mad3125_midterm.ui;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 import com.example.c0782918_w2020_mad3125_midterm.R;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Calendar;
+import java.util.Date;
 
 public class PersonInformationEntryActivity extends AppCompatActivity {
 
@@ -38,16 +54,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
     TextView textViewGrossIncome;
     @BindView(R.id.txtRRSP)
     TextView textViewRRSP;
-    @BindView(R.id.radioButtonMale)
-    RadioButton radioButtonMale;
-    @BindView(R.id.radioButtonFemale)
-    RadioButton radioButtonFemale;
-    @BindView(R.id.radioButtonOther)
-    RadioButton radioButtonOther;
-    @BindView(R.id.radioGroup)
-    RadioGroup radioGroupGender;
-    @BindView(R.id.btnSubmit)
-    Button btnSubmit;
+    int age;
 
 
     @Override
@@ -57,4 +64,12 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
     }
-}
+
+    @OnClick(R.id.btnSubmit)
+    public void onSubmitButtonClicked() {
+
+        }
+    }
+
+
+
