@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -128,19 +129,8 @@ public class TaxCredentialActivity extends AppCompatActivity {
         } else if (textViewDate.getText().toString().isEmpty()) {
             textViewDate.setError("Please enter Birth Date");
         }else if(age<18) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Error");
-            builder.setMessage("You are not eligible to file tax");
-            builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            });
-
-            AlertDialog homeAlert = builder.create();
-            homeAlert.show();
-
+            textViewDate.setText("You are not eligible to file tax");
+            textViewDate.setTextColor(Color.parseColor("#9B0000"));
         } else if (textViewGrossIncome.getText().toString().isEmpty()) {
             textViewGrossIncome.setError("Please enter Gross Income");
         } else if (textViewRRSP.getText().toString().isEmpty()) {
