@@ -1,8 +1,10 @@
 package com.example.c0782918_w2020_mad3125_midterm.ui;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -34,6 +36,8 @@ public class TaxDetailActivity extends AppCompatActivity {
     Bundle fetchData;
     CRACustomer object;
 
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +49,8 @@ public class TaxDetailActivity extends AppCompatActivity {
 
     }
 
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void fetchedData(){
         Intent intent = getIntent();
         if (intent.hasExtra("userObject")){

@@ -8,16 +8,17 @@ import java.time.LocalDate;
 import java.util.Date;
 
 
+
 public class CRACustomer
 {
-    public long personSINNumber;
+    public String personSINNumber;
     public String firstName;
     public String lastName;
     public String fullName;
-    public Date birthDate;
+    public String birthDate;
     public String gender;
     public int age;
-    public Date taxFilingDate;
+    public LocalDate taxFilingDate;
     public double grossIncome;
     public double federalTax;
     public double provincialTax;
@@ -30,11 +31,8 @@ public class CRACustomer
     public double totalTaxPayed;
 
     public CRACustomer() {}
-
-    public CRACustomer(long personSINNumber, String firstName, String lastName, String fullName,
-                       Date birthDate, String gender, int age, Date taxFilingDate,
-                       double grossIncome, double federalTax, double provincialTax, double cpp, double ei,
-                       double rrspContributed, double carryForwardRRSP,double maxRRSP, double totalTaxableIncome, double totalTaxPayed)
+    
+    public CRACustomer(String personSINNumber, String firstName, String lastName, String birthDate, double grossIncome, double rrspContributed)
     {
         this.personSINNumber = personSINNumber;
         this.firstName = firstName;
@@ -56,11 +54,11 @@ public class CRACustomer
         this.totalTaxPayed = totalTaxPayed;
     }
 
-    public long getPersonSINNumber() {
+    public String getPersonSINNumber() {
         return personSINNumber;
     }
 
-    public void setPersonSINNumber(long personSINNumber) {
+    public void setPersonSINNumber(String personSINNumber) {
         this.personSINNumber = personSINNumber;
     }
 
@@ -88,11 +86,11 @@ public class CRACustomer
         this.fullName = fullName;
     }
 
-    public Date getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -114,14 +112,16 @@ public class CRACustomer
         this.age = age;
     }
 
-    public Date getTaxFilingDate() {
+    
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public LocalDate getTaxFilingDate() {
 
-     //  taxFilingDate = LocalDate.now();
+        taxFilingDate = LocalDate.now();
 
         return taxFilingDate;
     }
 
-    public void setTaxFilingDate(Date taxFilingDate) {
+    public void setTaxFilingDate(LocalDate taxFilingDate) {
         this.taxFilingDate = taxFilingDate;
     }
 

@@ -154,7 +154,12 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
-                                customerData = new CRACustomer();
+                                customerData = new CRACustomer(textViewSIN.getText().toString(),
+                                        textViewFirstName.getText().toString(),
+                                        textViewLastName.getText().toString(),
+                                        textViewDate.getText().toString(),
+                                        Double.parseDouble(textViewGrossIncome.getText().toString()),
+                                        Double.parseDouble(textViewRRSP.getText().toString()));
                                 Bundle myBundle = new Bundle();
                                 myBundle.putSerializable("myBundle", (Serializable) customerData);
                                 Intent mIntent = new Intent(PersonInformationEntryActivity.this, TaxDetailActivity.class);
