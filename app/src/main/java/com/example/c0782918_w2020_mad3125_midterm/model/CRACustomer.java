@@ -135,38 +135,7 @@ public class CRACustomer implements Serializable {
     }
 
     public double getFederalTax() {
-
-        /*Double firstTaxRate = 0.15, secondTaxRate = 0.205, thirdTaxRate = 0.26, fourthTaxRate = 0.29, fifthTaxRate = 0.33;
-        Double firstBaseAmount = 0.0, secondBaseAmount = (47630 - 12069.00), thirdBaseAmount = (95259 - 47630.00), fourthBaseAmount = (147667 - 95259.00), fifthBaseAmount = (210371 - 147667.00);
-
-        Double income = getTotalTaxableIncome();
-
-        if (income <= 12069) {
-
-            this.federalTax = firstBaseAmount ;
-
-        } else if (income > 12069.01 && income <= 47630) {
-
-            this.federalTax = firstBaseAmount + ((income - 12069) * firstTaxRate);
-
-        } else if (income > 47630.01 && income <= 95259) {
-
-           this.federalTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + ((income-47630) * secondTaxRate);
-
-        } else if (income > 95259.01 && income <= 147667) {
-
-            this.federalTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + (thirdBaseAmount * secondTaxRate) + ((income-95259) * thirdTaxRate);
-
-        }else if (income > 147667.01 && income <= 210371) {
-
-            this.federalTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + (thirdBaseAmount * secondTaxRate) + (fourthBaseAmount * thirdTaxRate) + ((income-147667) * fourthTaxRate);
-
-        } else {
-
-            this.federalTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + (thirdBaseAmount * secondTaxRate) + (fourthBaseAmount * thirdTaxRate) + (fifthBaseAmount * fourthTaxRate) + ((income - 210371) * fifthTaxRate);
-
-        }
-*/
+        
         this.federalTax = federalTaxCalculate();
         this.federalTax = Double.valueOf(df.format(federalTax));
         return federalTax;
@@ -178,34 +147,7 @@ public class CRACustomer implements Serializable {
 
     public double getProvincialTax() {
 
-       /* Double firstTaxRate = 0.0505, secondTaxRate = 0.0915, thirdTaxRate = 0.1116, fourthTaxRate = 0.1216, fifthTaxRate = 0.1316;
-        Double firstBaseAmount = 0.0, secondBaseAmount = (43906 - 10582.00), thirdBaseAmount = (87813 - 43906.00), fourthBaseAmount = (150000 - 87813.00), fifthBaseAmount = (220000 - 150000.00);
-
-
-        double income = getTotalTaxableIncome();
-
-        if(income < 10582) {
-            this.provincialTax = firstBaseAmount ;
-
-        }else if(income < 43906 && income >= 10582.01){
-            this.provincialTax = firstBaseAmount + ((income - 10582) * firstTaxRate);
-
-        }else if(income < 87813 && income >= 43906.01){
-            this.provincialTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + ((income-43906) * secondTaxRate);
-
-        }else if(income < 150000 && income >= 87813.01){
-            this.provincialTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + (thirdBaseAmount * secondTaxRate) + ((income-87813) * thirdTaxRate);
-
-        }else if(income < 220000 && income >= 150000.01){
-            this.provincialTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + (thirdBaseAmount * secondTaxRate) + (fourthBaseAmount * thirdTaxRate) + ((income-150000) * fourthTaxRate);
-
-        }else{
-            this.provincialTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + (thirdBaseAmount * secondTaxRate) + (fourthBaseAmount * thirdTaxRate) + (fifthBaseAmount * fourthTaxRate) + ((income - 220000) * fifthTaxRate);
-
-        }*/
-
-
-       this.provincialTax = provincialTaxCalculate();
+        this.provincialTax = provincialTaxCalculate();
         this.provincialTax = Double.valueOf(df.format(provincialTax));
         return provincialTax;
 
@@ -217,14 +159,6 @@ public class CRACustomer implements Serializable {
 
     public double getCpp() {
 
-       /* double maxAnnualEarning = getGrossIncome();
-
-        if (maxAnnualEarning < 57400.00) {
-            this.cpp = maxAnnualEarning * (5.10 / 100);
-        } else {
-            this.cpp = 57400.00 * (5.10 / 100);
-        }
-*/
         this.cpp = calculateCPP();
         this.cpp = Double.valueOf(df.format(cpp));
         return cpp;
@@ -236,14 +170,6 @@ public class CRACustomer implements Serializable {
     }
 
     public double getEi() {
-
-        /*double maxInsurableIncome = getGrossIncome();
-
-        if (maxInsurableIncome < 53100.00) {
-            this.ei = maxInsurableIncome * (1.62 / 100);
-        } else {
-            this.ei = 53100.00 * (1.62 / 100);
-        }*/
 
         this.ei = eiCalculate();
         this.ei = Double.valueOf(df.format(ei));
