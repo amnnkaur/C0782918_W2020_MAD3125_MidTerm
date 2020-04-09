@@ -202,13 +202,9 @@ public class CRACustomer
         this.carryForwardRRSP = carryForwardRRSP;
     }
 
-    public double getTotalTaxableIncome() {
-        return totalTaxableIncome;
-    }
-
     public double getMaxRRSP() {
 
-        maxRRSP = this.grossIncome * (18/100);
+        this.maxRRSP = this.grossIncome * (18/100);
 
         return maxRRSP;
     }
@@ -216,6 +212,20 @@ public class CRACustomer
     public void setMaxRRSP(double maxRRSP) {
         this.maxRRSP = maxRRSP;
     }
+
+
+    public double getTotalTaxableIncome() {
+
+        if (getRrspContributed()>getMaxRRSP())
+        {
+            this.totalTaxableIncome = getGrossIncome()-(getCpp() + getEi() + getMaxRRSP());
+        }else{
+            this.totalTaxableIncome = getGrossIncome()-(getCpp() + getEi() + getRrspContributed());
+        }
+
+        return totalTaxableIncome;
+    }
+
 
     public void setTotalTaxableIncome(double totalTaxableIncome) {
         this.totalTaxableIncome = totalTaxableIncome;
