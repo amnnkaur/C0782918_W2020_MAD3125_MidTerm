@@ -5,13 +5,13 @@ import android.os.Build;
 import androidx.annotation.RequiresApi;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.Date;
 
 
 
-public class CRACustomer implements Serializable
-{
+public class CRACustomer implements Serializable {
     public String personSINNumber;
     public String firstName;
     public String lastName;
@@ -31,10 +31,10 @@ public class CRACustomer implements Serializable
     public double totalTaxableIncome;
     public double totalTaxPayed;
 
-    public CRACustomer() {}
+    public CRACustomer() {
+    }
 
-    public CRACustomer(String personSINNumber, String firstName, String lastName, String birthDate, double grossIncome, double rrspContributed, String gender, int age)
-    {
+    public CRACustomer(String personSINNumber, String firstName, String lastName, String birthDate, double grossIncome, double rrspContributed, String gender, int age) {
         this.personSINNumber = personSINNumber;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -80,7 +80,7 @@ public class CRACustomer implements Serializable
     }
 
     public String getFullName() {
-        return (this.lastName.toUpperCase() +" "+ this.firstName);
+        return (this.lastName.toUpperCase() + " " + this.firstName);
     }
 
     public void setFullName(String fullName) {
@@ -136,6 +136,36 @@ public class CRACustomer implements Serializable
 
     public double getFederalTax() {
 
+        Double firstTaxRate = 0.15, secondTaxRate = 0.205, thirdTaxRate = 0.26, fourthTaxRate = 0.29, fifthTaxRate = 0.33;
+        Double firstBaseAmount = 0.0, secondBaseAmount = (47630 - 12069.00), thirdBaseAmount = (95259 - 47630.00), fourthBaseAmount = (147667 - 95259.00), fifthBaseAmount = (210371 - 147667.00);
+
+        Double income = getTotalTaxableIncome();
+
+        if (income <= 12069) {
+
+            this.federalTax = firstBaseAmount ;
+
+        } else if (income > 12069.01 && income <= 47630) {
+
+            this.federalTax = firstBaseAmount + ((income - 12069) * firstTaxRate);
+
+        } else if (income > 47630.01 && income <= 95259) {
+
+           this.federalTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + ((income-47630) * secondTaxRate);
+
+        } else if (income > 95259.01 && income <= 147667) {
+
+            this.federalTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + (thirdBaseAmount * secondTaxRate) + ((income-95259) * thirdTaxRate);
+
+        }else if (income > 147667.01 && income <= 210371) {
+
+            this.federalTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + (thirdBaseAmount * secondTaxRate) + (fourthBaseAmount * thirdTaxRate) + ((income-147667) * fourthTaxRate);
+
+        } else {
+
+            this.federalTax = firstBaseAmount + (secondBaseAmount * firstTaxRate) + (thirdBaseAmount * secondTaxRate) + (fourthBaseAmount * thirdTaxRate) + (fifthBaseAmount * fourthTaxRate) + ((income - 210371) * fifthTaxRate);
+
+        }
 
         return federalTax;
     }
@@ -146,8 +176,8 @@ public class CRACustomer implements Serializable
 
     public double getProvincialTax() {
 
-
         return provincialTax;
+
     }
 
     public void setProvincialTax(double provincialTax) {
@@ -158,11 +188,10 @@ public class CRACustomer implements Serializable
 
         double maxAnnualEarning = this.grossIncome;
 
-        if(maxAnnualEarning < 57400.00){
-            this.cpp = maxAnnualEarning * (5.10/100);
-        }
-        else{
-            this.cpp = 57400.00 * (5.10/100);
+        if (maxAnnualEarning < 57400.00) {
+            this.cpp = maxAnnualEarning * (5.10 / 100);
+        } else {
+            this.cpp = 57400.00 * (5.10 / 100);
         }
         return cpp;
 
@@ -176,10 +205,10 @@ public class CRACustomer implements Serializable
 
         double maxInsurableIncome = this.grossIncome;
 
-        if (maxInsurableIncome <53100.00){
-            this.ei = maxInsurableIncome * (1.62/100);
-        }else{
-            this.ei = 53100.00 * (1.62/100);
+        if (maxInsurableIncome < 53100.00) {
+            this.ei = maxInsurableIncome * (1.62 / 100);
+        } else {
+            this.ei = 53100.00 * (1.62 / 100);
         }
         return ei;
     }
@@ -223,11 +252,10 @@ public class CRACustomer implements Serializable
 
     public double getTotalTaxableIncome() {
 
-        if (getRrspContributed()>getMaxRRSP())
-        {
-            this.totalTaxableIncome = getGrossIncome()-(getCpp() + getEi() + getMaxRRSP());
-        }else{
-            this.totalTaxableIncome = getGrossIncome()-(getCpp() + getEi() + getRrspContributed());
+        if (getRrspContributed() > getMaxRRSP()) {
+            this.totalTaxableIncome = getGrossIncome() - (getCpp() + getEi() + getMaxRRSP());
+        } else {
+            this.totalTaxableIncome = getGrossIncome() - (getCpp() + getEi() + getRrspContributed());
         }
 
         return totalTaxableIncome;
@@ -248,4 +276,5 @@ public class CRACustomer implements Serializable
     public void setTotalTaxPayed(double totalTaxPayed) {
         this.totalTaxPayed = totalTaxPayed;
     }
+
 }
