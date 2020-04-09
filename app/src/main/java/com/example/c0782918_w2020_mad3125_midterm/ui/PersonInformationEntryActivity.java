@@ -57,6 +57,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
     int age;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,10 +67,10 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.btnSubmit)
-    public void onSubmitButtonClicked() {
+    public void onSubmitButtonClicked(){
         if (textViewSIN.getText().toString().isEmpty()) {
             textViewSIN.setError("Please enter SIN No.");
-        } else if (textViewFirstName.getText().toString().isEmpty()) {
+        }else if (textViewFirstName.getText().toString().isEmpty()) {
             textViewFirstName.setError("Please enter First Name");
         } else if (textViewLastName.getText().toString().isEmpty()) {
             textViewLastName.setError("Please enter Last Name");
@@ -79,7 +80,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
             textViewGrossIncome.setError("Please enter Gross Income");
         } else if (textViewRRSP.getText().toString().isEmpty()) {
             textViewRRSP.setError("Please enter RRSP Contribution");
-        } else {
+        }else{
             new MaterialAlertDialogBuilder(PersonInformationEntryActivity.this)
                     .setTitle("Tax Filed!")
                     .setMessage("Are you sure to proceed with filing Tax?")
@@ -101,10 +102,13 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                         }
                     })
                     .show();
-            ;
-        }
+            ;}
+    } ;
+
+    @OnClick(R.id.imageButtonDate)
+    public void datePick(View view){
+        
     }
 
-
-
 }
+
