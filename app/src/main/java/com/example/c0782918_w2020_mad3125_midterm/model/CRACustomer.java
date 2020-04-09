@@ -207,6 +207,9 @@ public class CRACustomer
     }
 
     public double getMaxRRSP() {
+
+        maxRRSP = this.grossIncome * (18/100);
+
         return maxRRSP;
     }
 
