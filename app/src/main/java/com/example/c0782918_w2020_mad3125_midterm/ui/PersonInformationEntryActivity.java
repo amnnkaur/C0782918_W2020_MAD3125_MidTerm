@@ -65,6 +65,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
     int age;
     Date birthDate;
     CRACustomer customerData;
+    String pattern = "^(\\d{3}-\\d{3}-\\d{3})|(\\d{9})$";
 
 
     @Override
@@ -119,8 +120,8 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
 
     @OnClick(R.id.btnSubmit)
     public void onSubmitButtonClicked(){
-        if (textViewSIN.getText().toString().isEmpty()) {
-            textViewSIN.setError("Please enter SIN No.");
+        if (textViewSIN.getText().toString().isEmpty() || textViewSIN.getText().toString().matches(pattern)) {
+            textViewSIN.setError("Please enter valid SIN No.");
         }else if (textViewFirstName.getText().toString().isEmpty()) {
             textViewFirstName.setError("Please enter First Name");
         } else if (textViewLastName.getText().toString().isEmpty()) {
