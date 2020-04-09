@@ -107,7 +107,25 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
 
     @OnClick(R.id.imageButtonDate)
     public void datePick(View view){
-        
+        DatePickerDialog datePickerDialog;
+        final Calendar c = Calendar.getInstance();
+        int mYear = c.get(Calendar.YEAR);
+        final int mMonth = c.get(Calendar.MONTH);
+        int mDay = c.get(Calendar.DAY_OF_MONTH);
+        datePickerDialog = new DatePickerDialog(PersonInformationEntryActivity.this,
+                new DatePickerDialog.OnDateSetListener() {
+
+                    @RequiresApi(api = Build.VERSION_CODES.O)
+                    @Override
+                    public void onDateSet(DatePicker view, int year,
+                                          int monthOfYear, int dayOfMonth) {
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                        textViewDate.setText(sdf.toString());
+
+                        
+                    }
+                }, mYear, mMonth, mDay);
+        datePickerDialog.show();
     }
 
 }
