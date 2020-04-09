@@ -19,6 +19,7 @@ public class CRACustomer
     public double ei;
     public double rrspContributed;
     public double carryForwardRRSP;
+    public double maxRRSP;
     public double totalTaxableIncome;
     public double totalTaxPayed;
 
@@ -27,7 +28,7 @@ public class CRACustomer
     public CRACustomer(long personSINNumber, String firstName, String lastName, String fullName,
                        Date birthDate, String gender, int age, Date taxFilingDate,
                        double grossIncome, double federalTax, double provincialTax, double cpp, double ei,
-                       double rrspContributed, double carryForwardRRSP, double totalTaxableIncome, double totalTaxPayed)
+                       double rrspContributed, double carryForwardRRSP,double maxRRSP, double totalTaxableIncome, double totalTaxPayed)
     {
         this.personSINNumber = personSINNumber;
         this.firstName = firstName;
@@ -44,6 +45,7 @@ public class CRACustomer
         this.ei = ei;
         this.rrspContributed = rrspContributed;
         this.carryForwardRRSP = carryForwardRRSP;
+        this.maxRRSP = maxRRSP;
         this.totalTaxableIncome = totalTaxableIncome;
         this.totalTaxPayed = totalTaxPayed;
     }
@@ -170,6 +172,14 @@ public class CRACustomer
 
     public double getTotalTaxableIncome() {
         return totalTaxableIncome;
+    }
+
+    public double getMaxRRSP() {
+        return maxRRSP;
+    }
+
+    public void setMaxRRSP(double maxRRSP) {
+        this.maxRRSP = maxRRSP;
     }
 
     public void setTotalTaxableIncome(double totalTaxableIncome) {
