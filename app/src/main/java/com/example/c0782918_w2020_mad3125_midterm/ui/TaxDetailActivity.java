@@ -33,8 +33,8 @@ public class TaxDetailActivity extends AppCompatActivity {
     @BindView(R.id.textViewTotalTaxIncome) TextView textViewTotalTaxIncome;
     @BindView(R.id.textViewTotalTaxPay) TextView textViewTotalTaxPay;
 
-    Bundle fetchData;
-    CRACustomer object;
+    Bundle customerBundle;
+    CRACustomer customer;
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -45,34 +45,34 @@ public class TaxDetailActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        fetchedData();
+        customerDetails();
 
     }
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void fetchedData(){
+    public void customerDetails(){
         Intent intent = getIntent();
         if (intent.hasExtra("customerObject")){
-            fetchData = intent.getBundleExtra("customerObject");
-            object = (CRACustomer) fetchData.getSerializable("myBundle");
+            customerBundle = intent.getBundleExtra("customerObject");
+            customer = (CRACustomer) customerBundle.getSerializable("myBundle");
 
-            textViewSIN.setText(String.valueOf(object.getPersonSINNumber()));
-            textViewName.setText(object.getFullName());
-            textViewBirthDate.setText(String.valueOf(object.getBirthDate()));
-            textViewAge.setText(String.valueOf(object.getAge()));
-            textViewGender.setText(String.valueOf(object.getGender()));
-            textViewTaxDate.setText(String.valueOf(object.getTaxFilingDate()));
-            textViewGross.setText(String.valueOf(object.getGrossIncome()) + "$");
-            textViewCPP.setText(String.valueOf(object.getCpp())+ "$");
-            textViewEI.setText(String.valueOf(object.getEi())+ "$");
-            textViewRRSP.setText(String.valueOf(object.getRrspContributed())+ "$");
-            textViewCarryFwd.setText(String.valueOf(object.getCarryForwardRRSP())+ "$");
-            textViewMaxRRSP.setText(String.valueOf(object.getMaxRRSP())+ "$");
-            textViewFederal.setText(String.valueOf(object.getFederalTax())+ "$");
-            textViewProvincial.setText(String.valueOf(object.getProvincialTax())+ "$");
-            textViewTotalTaxIncome.setText(String.valueOf(object.getTotalTaxableIncome())+ "$");
-            textViewTotalTaxPay.setText(String.valueOf(object.getTotalTaxPayed())+ "$");
+            textViewSIN.setText(String.valueOf(customer.getPersonSINNumber()));
+            textViewName.setText(customer.getFullName());
+            textViewBirthDate.setText(String.valueOf(customer.getBirthDate()));
+            textViewAge.setText(String.valueOf(customer.getAge()));
+            textViewGender.setText(String.valueOf(customer.getGender()));
+            textViewTaxDate.setText(String.valueOf(customer.getTaxFilingDate()));
+            textViewGross.setText(String.valueOf(customer.getGrossIncome()) + "$");
+            textViewCPP.setText(String.valueOf(customer.getCpp())+ "$");
+            textViewEI.setText(String.valueOf(customer.getEi())+ "$");
+            textViewRRSP.setText(String.valueOf(customer.getRrspContributed())+ "$");
+            textViewCarryFwd.setText(String.valueOf(customer.getCarryForwardRRSP())+ "$");
+            textViewMaxRRSP.setText(String.valueOf(customer.getMaxRRSP())+ "$");
+            textViewFederal.setText(String.valueOf(customer.getFederalTax())+ "$");
+            textViewProvincial.setText(String.valueOf(customer.getProvincialTax())+ "$");
+            textViewTotalTaxIncome.setText(String.valueOf(customer.getTotalTaxableIncome())+ "$");
+            textViewTotalTaxPay.setText(String.valueOf(customer.getTotalTaxPayed())+ "$");
 
         }
     }
