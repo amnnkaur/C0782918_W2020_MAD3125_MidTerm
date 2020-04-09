@@ -269,7 +269,7 @@ public class CRACustomer implements Serializable {
 
         this.carryForwardRRSP = maxRRSP - carryFwdRRSP;
 
-        this.carryForwardRRSP = Double.valueOf(df.format(carryFwdRRSP));
+        this.carryForwardRRSP = Double.valueOf(df.format(carryForwardRRSP));
         return carryForwardRRSP;
     }
 
