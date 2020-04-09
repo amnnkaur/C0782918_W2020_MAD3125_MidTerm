@@ -67,9 +67,24 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
 
     @OnClick(R.id.btnSubmit)
     public void onSubmitButtonClicked() {
+        if (textViewSIN.getText().toString().isEmpty()) {
+            textViewSIN.setError("Please enter SIN No.");
+        } else if (textViewFirstName.getText().toString().isEmpty()) {
+            textViewFirstName.setError("Please enter First Name");
+        } else if (textViewLastName.getText().toString().isEmpty()) {
+            textViewLastName.setError("Please enter Last Name");
+        } else if (textViewDate.getText().toString().isEmpty()) {
+            textViewDate.setError("Please enter Birth Date");
+        } else if (textViewGrossIncome.getText().toString().isEmpty()) {
+            textViewGrossIncome.setError("Please enter Gross Income");
+        } else if (textViewRRSP.getText().toString().isEmpty()) {
+            textViewRRSP.setError("Please enter RRSP Contribution");
+        } else {
 
+            ;
         }
     }
 
 
 
+}
