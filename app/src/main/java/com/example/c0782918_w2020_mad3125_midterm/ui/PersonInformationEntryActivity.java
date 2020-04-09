@@ -69,7 +69,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
     Date birthDate;
     CRACustomer customerData;
     String pattern = "^(\\d{3}-\\d{3}-\\d{3})|(\\d{9})$";
-    String gender;
+    String gender = "Male";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
