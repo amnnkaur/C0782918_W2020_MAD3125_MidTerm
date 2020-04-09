@@ -4,12 +4,13 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
 
 
-public class CRACustomer
+public class CRACustomer implements Serializable
 {
     public String personSINNumber;
     public String firstName;
@@ -31,8 +32,8 @@ public class CRACustomer
     public double totalTaxPayed;
 
     public CRACustomer() {}
-    
-    public CRACustomer(String personSINNumber, String firstName, String lastName, String birthDate, double grossIncome, double rrspContributed)
+
+    public CRACustomer(String personSINNumber, String firstName, String lastName, String birthDate, double grossIncome, double rrspContributed, String gender, int age)
     {
         this.personSINNumber = personSINNumber;
         this.firstName = firstName;
@@ -112,7 +113,7 @@ public class CRACustomer
         this.age = age;
     }
 
-    
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public LocalDate getTaxFilingDate() {
 
@@ -235,7 +236,7 @@ public class CRACustomer
 
     public double getMaxRRSP() {
 
-        this.maxRRSP = this.grossIncome * (18/100);
+        this.maxRRSP = getGrossIncome() * 0.18;
 
         return maxRRSP;
     }
