@@ -55,7 +55,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
     @BindView(R.id.txtRRSP)
     TextView textViewRRSP;
     int age;
-
+    Date birthDate;
 
 
     @Override
@@ -123,7 +123,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                         textViewDate.setText(sdf.toString());
                         try {
-                            Date dateOfBirth = sdf.parse(textViewDate.getText().toString());
+                            birthDate = sdf.parse(textViewDate.getText().toString());
                             LocalDate l1 = LocalDate.of(year, monthOfYear + 1, dayOfMonth);
                             LocalDate now1 = LocalDate.now();
                             Period diff1 = Period.between(l1, now1);
@@ -137,7 +137,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                                     .setTitle("ERROR!")
                                     .setMessage("You are not eligible to file Tax.")
                                     .setCancelable(false)
-                                    .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                                    .setNegativeButton("OK", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             dialog.dismiss();
