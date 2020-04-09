@@ -93,10 +93,10 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int which) {
 
                                 customerData = new CRACustomer();
-                                Bundle userBundle = new Bundle();
-                                userBundle.putSerializable("userBundle", (Serializable) customerData);
+                                Bundle myBundle = new Bundle();
+                                myBundle.putSerializable("myBundle", (Serializable) customerData);
                                 Intent mIntent = new Intent(PersonInformationEntryActivity.this, TaxDetailActivity.class);
-                                mIntent.putExtra("customerObject", userBundle);
+                                mIntent.putExtra("customerObject", myBundle);
                                 startActivity(mIntent);
                             }
                         })

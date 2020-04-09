@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.c0782918_w2020_mad3125_midterm.R;
+import com.example.c0782918_w2020_mad3125_midterm.model.CRACustomer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,6 +31,9 @@ public class TaxDetailActivity extends AppCompatActivity {
     @BindView(R.id.textViewTotalTaxIncome) TextView textViewTotalTaxIncome;
     @BindView(R.id.textViewTotalTaxPay) TextView textViewTotalTaxPay;
 
+    Bundle fetchData;
+    CRACustomer object;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,13 +41,11 @@ public class TaxDetailActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        Intent intent = getIntent();
 
-       // textViewSIN.setText(String.valueOf());
+    }
 
-
-
-
+    public void fetchedData(){
+        
     }
 
 }
