@@ -63,16 +63,16 @@ public class TaxDetailActivity extends AppCompatActivity {
             textViewAge.setText(String.valueOf(object.getAge()));
             textViewGender.setText(String.valueOf(object.getGender()));
             textViewTaxDate.setText(String.valueOf(object.getTaxFilingDate()));
-            textViewGross.setText(String.valueOf(object.getGrossIncome()));
-            textViewCPP.setText(String.valueOf(object.getCpp()));
-            textViewEI.setText(String.valueOf(object.getEi()));
-            textViewRRSP.setText(String.valueOf(object.getRrspContributed()));
-            textViewCarryFwd.setText(String.valueOf(object.getCarryForwardRRSP()));
-            textViewMaxRRSP.setText(String.valueOf(object.getMaxRRSP()));
-            textViewFederal.setText(String.valueOf(object.getFederalTax()));
-            textViewProvincial.setText(String.valueOf(object.getProvincialTax()));
-            textViewTotalTaxIncome.setText(String.valueOf(object.getTotalTaxableIncome()));
-            textViewTotalTaxPay.setText(String.valueOf(object.getTotalTaxPayed()));
+            textViewGross.setText(String.valueOf(object.getGrossIncome()) + "$");
+            textViewCPP.setText(String.valueOf(object.getCpp())+ "$");
+            textViewEI.setText(String.valueOf(object.getEi())+ "$");
+            textViewRRSP.setText(String.valueOf(object.getRrspContributed())+ "$");
+            textViewCarryFwd.setText(String.valueOf(object.getCarryForwardRRSP())+ "$");
+            textViewMaxRRSP.setText(String.valueOf(object.getMaxRRSP())+ "$");
+            textViewFederal.setText(String.valueOf(object.getFederalTax())+ "$");
+            textViewProvincial.setText(String.valueOf(object.getProvincialTax())+ "$");
+            textViewTotalTaxIncome.setText(String.valueOf(object.getTotalTaxableIncome())+ "$");
+            textViewTotalTaxPay.setText(String.valueOf(object.getTotalTaxPayed())+ "$");
 
         }
     }
