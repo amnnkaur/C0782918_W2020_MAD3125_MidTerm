@@ -107,9 +107,9 @@ public class TaxCredentialActivity extends AppCompatActivity {
                         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
                         try {
                             birthDate = formatter.parse(textViewDate.getText().toString());
-                            LocalDate l1 = LocalDate.of(year, monthOfYear + 1, dayOfMonth);
-                            LocalDate now1 = LocalDate.now();
-                            Period diff1 = Period.between(l1, now1);
+                            LocalDate localDate = LocalDate.of(year, monthOfYear + 1, dayOfMonth);
+                            LocalDate now = LocalDate.now();
+                            Period diff1 = Period.between(localDate, now);
                             age = diff1.getYears();
                         } catch (ParseException e) {
                             e.printStackTrace();
@@ -121,7 +121,7 @@ public class TaxCredentialActivity extends AppCompatActivity {
     }
 
     public void onSubmitButtonClicked(View view) {
-        if (textViewSIN.getText().toString().isEmpty() || textViewSIN.getText().toString().matches(pattern)) {
+        if (textViewSIN.getText().toString().isEmpty() && textViewSIN.getText().toString().matches(pattern)) {
             textViewSIN.setError("Please enter valid SIN No.");
         }else if (textViewFirstName.getText().toString().isEmpty()) {
             textViewFirstName.setError("Please enter First Name");

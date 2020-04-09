@@ -264,7 +264,7 @@ public class CRACustomer implements Serializable {
 
     public double getCarryForwardRRSP() {
 
-        double carryFwdRRSP = this.rrspContributed;
+        double carryFwdRRSP = getRrspContributed();
 
         this.carryForwardRRSP = getMaxRRSP() - carryFwdRRSP;
 
