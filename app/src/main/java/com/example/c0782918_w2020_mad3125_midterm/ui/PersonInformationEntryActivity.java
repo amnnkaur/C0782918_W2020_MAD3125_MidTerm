@@ -1,8 +1,10 @@
 package com.example.c0782918_w2020_mad3125_midterm.ui;
 
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,6 +16,7 @@ import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -66,7 +69,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
     Date birthDate;
     CRACustomer customerData;
     String pattern = "^(\\d{3}-\\d{3}-\\d{3})|(\\d{9})$";
-
+    String gender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,115 +78,39 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-    }
 
-    @OnClick(R.id.radioGroup)
-    public void onRadioButtonClicked(){
 
-        int radioId = radioGroup.getCheckedRadioButtonId();
-        rb = findViewById(radioId);
-
-        switch (radioId){
-            case R.id.radioButtonMale:
-                customerData.setGender("Male");
-                break;
-
-            case R.id.radioButtonFemale:
-                customerData.setGender("Female");
-                break;
-
-            case R.id.radioButtonOther:
-                customerData.setGender("Other");
-                break;
-        }
-        radioButtonCheck();
-
-    }
-
-    public void radioButtonCheck(){
-
-        if(customerData.getGender().equals("Male"))
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
-            radioButtonMale.setChecked(true);
-            radioButtonFemale.setChecked(false);
-            radioButtonOther.setChecked(false);
-        }else if(customerData.getGender().equals("Female")){
-            radioButtonMale.setChecked(false);
-            radioButtonFemale.setChecked(true);
-            radioButtonOther.setChecked(false);
-        }else{
-            radioButtonMale.setChecked(false);
-            radioButtonFemale.setChecked(false);
-            radioButtonOther.setChecked(true);
-        }
-    }
-
-    @OnClick(R.id.btnSubmit)
-    public void onSubmitButtonClicked(){
-        if (textViewSIN.getText().toString().isEmpty() || textViewSIN.getText().toString().matches(pattern)) {
-            textViewSIN.setError("Please enter valid SIN No.");
-        }else if (textViewFirstName.getText().toString().isEmpty()) {
-            textViewFirstName.setError("Please enter First Name");
-        } else if (textViewLastName.getText().toString().isEmpty()) {
-            textViewLastName.setError("Please enter Last Name");
-        } else if (textViewDate.getText().toString().isEmpty()) {
-            textViewDate.setError("Please enter Birth Date");
-        }else if(age<18) {
-            new MaterialAlertDialogBuilder(PersonInformationEntryActivity.this)
-                    .setTitle("ERROR!")
-                    .setMessage("You are not eligible to file Tax.")
-                    .setCancelable(false)
-                    .setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    })
-                    .show();
-
-        } else if (textViewGrossIncome.getText().toString().isEmpty()) {
-            textViewGrossIncome.setError("Please enter Gross Income");
-        } else if (textViewRRSP.getText().toString().isEmpty()) {
-            textViewRRSP.setError("Please enter RRSP Contribution");
-        }else{
-            new MaterialAlertDialogBuilder(PersonInformationEntryActivity.this)
-                    .setTitle("Tax Filed!")
-                    .setMessage("Are you sure to proceed with filing Tax?")
-                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
-
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                                customerData = new CRACustomer(textViewSIN.getText().toString(),
-                                        textViewFirstName.getText().toString(),
-                                        textViewLastName.getText().toString(),
-                                        textViewDate.getText().toString(),
-                                        Double.parseDouble(textViewGrossIncome.getText().toString()),
-                                        Double.parseDouble(textViewRRSP.getText().toString()));
-                                Bundle myBundle = new Bundle();
-                                myBundle.putSerializable("myBundle", (Serializable) customerData);
-                                Intent mIntent = new Intent(PersonInformationEntryActivity.this, TaxDetailActivity.class);
-                                mIntent.putExtra("customerObject", myBundle);
-                                startActivity(mIntent);
-                            }
-                        })
-                        .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        })
-                        .show();
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch(checkedId){
+                    case R.id.radioButtonMale:
+                        Toast.makeText(PersonInformationEntryActivity.this, "Male", Toast.LENGTH_SHORT).show();
+                        gender = "Male";
+                        // do operations specific to this selection
+                        break;
+                    case R.id.radioButtonFemale:
+                        Toast.makeText(PersonInformationEntryActivity.this, "Female", Toast.LENGTH_SHORT).show();
+                        gender = "Female";
+                        // do operations specific to this selection
+                        break;
+                    case R.id.radioButtonOther:
+                        Toast.makeText(PersonInformationEntryActivity.this, "Other", Toast.LENGTH_SHORT).show();
+                        gender = "Other";
+                        // do operations specific to this selection
+                        break;
+                }
             }
+        });
+
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    @OnClick(R.id.imageButtonDate)
-    public void datePick(View view){
+
+    public void datePickImageButton(View view) {
         DatePickerDialog datePickerDialog;
         final Calendar c = Calendar.getInstance();
         int mYear = c.get(Calendar.YEAR);
-        final int mMonth = c.get(Calendar.MONTH);
+        int mMonth = c.get(Calendar.MONTH);
         int mDay = c.get(Calendar.DAY_OF_MONTH);
         datePickerDialog = new DatePickerDialog(PersonInformationEntryActivity.this,
                 new DatePickerDialog.OnDateSetListener() {
@@ -192,10 +119,12 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
-                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                        textViewDate.setText(sdf.toString());
+                        // set day of month , month and year value in the edit text
+                        textViewDate.setText(dayOfMonth + "-"
+                                + (monthOfYear + 1) + "-" + year);
+                        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
                         try {
-                            birthDate = sdf.parse(textViewDate.getText().toString());
+                            birthDate = formatter.parse(textViewDate.getText().toString());
                             LocalDate l1 = LocalDate.of(year, monthOfYear + 1, dayOfMonth);
                             LocalDate now1 = LocalDate.now();
                             Period diff1 = Period.between(l1, now1);
@@ -209,6 +138,65 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
+    public void onSubmitButtonClicked(View view) {
+        if (textViewSIN.getText().toString().isEmpty() || textViewSIN.getText().toString().matches(pattern)) {
+            textViewSIN.setError("Please enter valid SIN No.");
+        }else if (textViewFirstName.getText().toString().isEmpty()) {
+            textViewFirstName.setError("Please enter First Name");
+        } else if (textViewLastName.getText().toString().isEmpty()) {
+            textViewLastName.setError("Please enter Last Name");
+        } else if (textViewDate.getText().toString().isEmpty()) {
+            textViewDate.setError("Please enter Birth Date");
+        }else if(age<18) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Error");
+            builder.setMessage("You are not eligible to file tax");
+            builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
 
+            AlertDialog homeAlert = builder.create();
+            homeAlert.show();
+
+        } else if (textViewGrossIncome.getText().toString().isEmpty()) {
+            textViewGrossIncome.setError("Please enter Gross Income");
+        } else if (textViewRRSP.getText().toString().isEmpty()) {
+            textViewRRSP.setError("Please enter RRSP Contribution");
+        }else{
+            AlertDialog.Builder alertBuilder = new AlertDialog.Builder(PersonInformationEntryActivity.this);
+            alertBuilder.setTitle("Tax Filed!");
+            alertBuilder.setMessage("Are you sure to proceed with filing Tax?");
+            alertBuilder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    customerData = new CRACustomer(textViewSIN.getText().toString(),
+                            textViewFirstName.getText().toString(),
+                            textViewLastName.getText().toString(),
+                            textViewDate.getText().toString(),
+                            Double.parseDouble(textViewGrossIncome.getText().toString()),
+                            Double.parseDouble(textViewRRSP.getText().toString()),gender,age);
+                    Bundle myBundle = new Bundle();
+                    myBundle.putSerializable("myBundle", (Serializable) customerData);
+                    Intent mIntent = new Intent(PersonInformationEntryActivity.this, TaxDetailActivity.class);
+                    mIntent.putExtra("customerObject", myBundle);
+                    startActivity(mIntent);
+                }
+            });
+            alertBuilder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog taxAlert = alertBuilder.create();
+            taxAlert.show();
+        }
+
+
+    }
 }
-
