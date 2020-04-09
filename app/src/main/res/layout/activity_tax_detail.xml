@@ -217,11 +217,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="21dp"
             android:layout_marginTop="40dp"
-            android:layout_marginBottom="48dp"
             android:text="Total Tax Payed"
             android:textColor="#000A12"
             android:textSize="18dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
@@ -411,11 +409,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="76dp"
             android:layout_marginTop="41dp"
-            android:layout_marginBottom="48dp"
             android:text="Total Tax Payed"
             android:textColor="#000A12"
             android:textSize="18dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView16"
             app:layout_constraintTop_toBottomOf="@+id/textViewTotalTaxIncome" />
 

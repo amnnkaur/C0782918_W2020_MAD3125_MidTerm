@@ -56,6 +56,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
     TextView textViewGrossIncome;
     @BindView(R.id.txtRRSP)
     TextView textViewRRSP;
+    @BindView(R.id.radioGroup) RadioGroup radioGroup;
     int age;
     Date birthDate;
     CRACustomer customerData;
@@ -67,6 +68,15 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_person_information_entry);
 
         ButterKnife.bind(this);
+
+    }
+
+    @OnClick(R.id.radioGroup)
+    public void onRadioButtonClicked(){
+
+        int radioId = radioGroup.getCheckedRadioButtonId();
+
+
     }
 
     @OnClick(R.id.btnSubmit)
@@ -154,6 +164,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                 }, mYear, mMonth, mDay);
         datePickerDialog.show();
     }
+
 
 }
 

@@ -1,6 +1,12 @@
 package com.example.c0782918_w2020_mad3125_midterm.model;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
+import java.time.LocalDate;
 import java.util.Date;
+
 
 public class CRACustomer
 {
@@ -75,7 +81,7 @@ public class CRACustomer
     }
 
     public String getFullName() {
-        return fullName;
+        return (this.lastName.toUpperCase() +" "+ this.firstName);
     }
 
     public void setFullName(String fullName) {
@@ -107,6 +113,9 @@ public class CRACustomer
     }
 
     public Date getTaxFilingDate() {
+
+     //   taxFilingDate = LocalDate.now();
+
         return taxFilingDate;
     }
 
@@ -139,7 +148,17 @@ public class CRACustomer
     }
 
     public double getCpp() {
+
+        double maxGrossCpp = this.grossIncome;
+        
+        if(maxGrossCpp < 57400.00){
+            this.cpp = maxGrossCpp * (5.10/100);
+        }
+        else{
+            this.cpp = 57400.00 * (5.10/100);
+        }
         return cpp;
+
     }
 
     public void setCpp(double cpp) {
