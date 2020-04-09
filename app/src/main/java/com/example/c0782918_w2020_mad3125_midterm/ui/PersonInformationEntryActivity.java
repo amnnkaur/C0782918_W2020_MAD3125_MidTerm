@@ -80,7 +80,24 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
         } else if (textViewRRSP.getText().toString().isEmpty()) {
             textViewRRSP.setError("Please enter RRSP Contribution");
         } else {
+            new MaterialAlertDialogBuilder(PersonInformationEntryActivity.this)
+                    .setTitle("Tax Filed!")
+                    .setMessage("Are you sure to proceed with filing Tax?")
+                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
 
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            
+                        }
+                    })
+                    .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .show();
             ;
         }
     }
