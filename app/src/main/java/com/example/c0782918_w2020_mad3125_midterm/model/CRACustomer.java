@@ -426,5 +426,5 @@ public class CRACustomer implements Serializable {
         }
         return calculatedEI;
     }
-    
+
 }

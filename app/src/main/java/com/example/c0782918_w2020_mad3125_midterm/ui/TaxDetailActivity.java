@@ -4,6 +4,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -68,6 +69,9 @@ public class TaxDetailActivity extends AppCompatActivity {
             textViewEI.setText(String.valueOf(customer.getEi())+ "$");
             textViewRRSP.setText(String.valueOf(customer.getRrspContributed())+ "$");
             textViewCarryFwd.setText(String.valueOf(customer.getCarryForwardRRSP())+ "$");
+            if(customer.getCarryForwardRRSP()<0){
+                textViewCarryFwd.setTextColor(Color.parseColor("#9B0000"));
+            }
             textViewMaxRRSP.setText(String.valueOf(customer.getMaxRRSP())+ "$");
             textViewFederal.setText(String.valueOf(customer.getFederalTax())+ "$");
             textViewProvincial.setText(String.valueOf(customer.getProvincialTax())+ "$");

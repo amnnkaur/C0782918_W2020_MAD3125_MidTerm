@@ -86,7 +86,6 @@ public class TaxCredentialActivity extends AppCompatActivity {
 
     }
 
-
     public void datePickImageButton(View view) {
         DatePickerDialog datePickerDialog;
         final Calendar c = Calendar.getInstance();
