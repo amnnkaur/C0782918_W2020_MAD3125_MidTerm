@@ -45,8 +45,8 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editTxtSin"
-            android:layout_width="299dp"
-            android:layout_height="wrap_content"
+            android:layout_width="298dp"
+            android:layout_height="52dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="24dp"
             android:ems="10"
@@ -58,14 +58,14 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtSin"
                 android:layout_width="match_parent"
-                android:textColor="#000A12"
-                android:layout_height="25dp" />
+                android:layout_height="40dp"
+                android:textColor="#000A12" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editTxtFirstName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="52dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="20dp"
@@ -78,16 +78,16 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtFirstName"
-                android:textColor="#000A12"
                 android:layout_width="match_parent"
-                android:layout_height="25dp" />
+                android:layout_height="40dp"
+                android:textColor="#000A12" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editTxtLastName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="52dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="26dp"
             android:layout_marginEnd="20dp"
@@ -100,9 +100,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtLastName"
-                android:textColor="#000A12"
                 android:layout_width="match_parent"
-                android:layout_height="25dp" />
+                android:layout_height="40dp"
+                android:textColor="#000A12" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -139,9 +139,9 @@
             android:layout_marginStart="39dp"
             android:layout_marginTop="48dp"
             android:layout_marginEnd="75dp"
+
             android:checkedButton="@+id/radioButtonMale"
             android:orientation="horizontal"
-            android:onClick="onRadioButtonClicked"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textViewGender"
             app:layout_constraintTop_toBottomOf="@+id/txtDate">
@@ -189,7 +189,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editTxtGrossIncome"
             android:layout_width="240dp"
-            android:layout_height="wrap_content"
+            android:layout_height="52dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="49dp"
             android:layout_marginEnd="25dp"
@@ -202,10 +202,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtGrossIncome"
-                android:textColor="#000A12"
-                android:inputType="numberDecimal"
                 android:layout_width="240dp"
-                android:layout_height="25dp" />
+                android:layout_height="40dp"
+                android:inputType="numberDecimal"
+                android:textColor="#000A12" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -224,7 +224,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editTxtRRSP"
             android:layout_width="215dp"
-            android:layout_height="wrap_content"
+            android:layout_height="52dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="56dp"
             android:layout_marginEnd="25dp"
@@ -237,10 +237,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtRRSP"
-                android:textColor="#000A12"
-                android:inputType="numberDecimal"
                 android:layout_width="215dp"
-                android:layout_height="25dp" />
+                android:layout_height="40dp"
+                android:inputType="numberDecimal"
+                android:textColor="#000A12" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -252,14 +252,16 @@
             android:layout_marginTop="56dp"
             android:layout_marginEnd="172dp"
             android:layout_marginBottom="62dp"
+            android:background="#000A12"
             android:text="Submit"
             android:onClick="onSubmitButtonClicked"
             android:textColor="#FFFFFF"
-            android:background="#000A12"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTxtRRSP" />
+            app:layout_constraintTop_toBottomOf="@+id/editTxtRRSP"
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageButton
             android:id="@+id/imageButtonDate"
@@ -267,7 +269,7 @@
             android:layout_height="35dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="32dp"
-            android:onClick="datePick"
+            android:onClick="datePickImageButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTxtLastName"
             app:srcCompat="@drawable/calendar" />
