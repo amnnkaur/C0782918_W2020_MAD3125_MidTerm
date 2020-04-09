@@ -232,6 +232,9 @@ public class CRACustomer
     }
 
     public double getTotalTaxPayed() {
+
+        this.totalTaxPayed = getFederalTax() + getProvincialTax();
+
         return totalTaxPayed;
     }
 
