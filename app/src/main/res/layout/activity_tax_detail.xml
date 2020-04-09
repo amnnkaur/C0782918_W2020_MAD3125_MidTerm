@@ -225,6 +225,165 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
+        <TextView
+            android:id="@+id/textViewSIN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SIN No."
+            android:textColor="#000A12"
+            android:textSize="18dp"
+            tools:layout_editor_absoluteX="213dp"
+            tools:layout_editor_absoluteY="80dp" />
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full Name"
+            android:textColor="#000A12"
+            android:textSize="18dp"
+            tools:layout_editor_absoluteX="213dp"
+            tools:layout_editor_absoluteY="135dp" />
+
+        <TextView
+            android:id="@+id/textViewBirthDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Birth Date"
+            android:textColor="#000A12"
+            android:textSize="18dp"
+            tools:layout_editor_absoluteX="213dp"
+            tools:layout_editor_absoluteY="190dp" />
+
+        <TextView
+            android:id="@+id/textViewAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age"
+            android:textColor="#000A12"
+            android:textSize="18dp"
+            tools:layout_editor_absoluteX="226dp"
+            tools:layout_editor_absoluteY="245dp" />
+
+        <TextView
+            android:id="@+id/textViewGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender"
+            android:textColor="#000A12"
+            android:textSize="18dp"
+            tools:layout_editor_absoluteX="226dp"
+            tools:layout_editor_absoluteY="303dp" />
+
+        <TextView
+            android:id="@+id/textViewTaxDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tax Filing Date."
+            android:textColor="#000A12"
+            android:textSize="18dp"
+            tools:layout_editor_absoluteX="226dp"
+            tools:layout_editor_absoluteY="362dp" />
+
+        <TextView
+            android:id="@+id/textViewGross"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gross Income"
+            android:textColor="#000A12"
+            android:textSize="18dp"
+            tools:layout_editor_absoluteX="226dp"
+            tools:layout_editor_absoluteY="421dp" />
+
+        <TextView
+            android:id="@+id/textViewCPP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CPP"
+            android:textColor="#000A12"
+            android:textSize="18dp"
+            tools:layout_editor_absoluteX="226dp"
+            tools:layout_editor_absoluteY="540dp" />
+
+        <TextView
+            android:id="@+id/textViewEI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EI"
+            android:textColor="#000A12"
+            android:textSize="18dp"
+            tools:layout_editor_absoluteX="226dp"
+            tools:layout_editor_absoluteY="481dp" />
+
+        <TextView
+            android:id="@+id/textViewRRSP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RRSP Contributed"
+            android:textColor="#000A12"
+            android:textSize="18dp"
+            tools:layout_editor_absoluteX="226dp"
+            tools:layout_editor_absoluteY="607dp" />
+
+        <TextView
+            android:id="@+id/textViewCarryFwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Carry Forward RRSP"
+            android:textColor="#000A12"
+            android:textSize="18dp"
+            tools:layout_editor_absoluteX="226dp"
+            tools:layout_editor_absoluteY="669dp" />
+
+        <TextView
+            android:id="@+id/textViewMaxRRSP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Max RRSP"
+            android:textColor="#000A12"
+            android:textSize="18dp"
+            tools:layout_editor_absoluteX="226dp"
+            tools:layout_editor_absoluteY="736dp" />
+
+        <TextView
+            android:id="@+id/textViewFederal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Federal Tax"
+            android:textColor="#000A12"
+            android:textSize="18dp"
+            tools:layout_editor_absoluteX="226dp"
+            tools:layout_editor_absoluteY="791dp" />
+
+        <TextView
+            android:id="@+id/textViewProvincial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Provincial Tax"
+            android:textColor="#000A12"
+            android:textSize="18dp"
+            tools:layout_editor_absoluteX="226dp"
+            tools:layout_editor_absoluteY="862dp" />
+
+        <TextView
+            android:id="@+id/textViewTotalTaxIncome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Taxable Income"
+            android:textColor="#000A12"
+            android:textSize="18dp"
+            tools:layout_editor_absoluteX="226dp"
+            tools:layout_editor_absoluteY="926dp" />
+
+        <TextView
+            android:id="@+id/textViewTotalTaxPay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Tax Payed"
+            android:textColor="#000A12"
+            android:textSize="18dp"
+            tools:layout_editor_absoluteX="226dp"
+            tools:layout_editor_absoluteY="991dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
