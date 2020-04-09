@@ -121,8 +121,15 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
                                           int monthOfYear, int dayOfMonth) {
                         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                         textViewDate.setText(sdf.toString());
-
-                        
+                        try {
+                            Date dateOfBirth = sdf.parse(textViewDate.getText().toString());
+                            LocalDate l1 = LocalDate.of(year, monthOfYear+1, dayOfMonth);
+                            LocalDate now1 = LocalDate.now();
+                            Period diff1 = Period.between(l1, now1);
+                            age = diff1.getYears();
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }, mYear, mMonth, mDay);
         datePickerDialog.show();
