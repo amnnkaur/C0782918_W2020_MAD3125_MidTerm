@@ -97,6 +97,8 @@ public class CRACustomer
     }
 
     public String getGender() {
+
+
         return gender;
     }
 
@@ -140,6 +142,35 @@ public class CRACustomer
     }
 
     public double getProvincialTax() {
+
+       /* if (totalTaxableIncome >= 10582.01)
+        {
+            this.totalTaxableIncome = this.totalTaxableIncome - 10582;
+            if(totalTaxableIncome >43906.01)
+            {
+                provincialTax = 43906 * (5.05/100);
+                totalTaxableIncome = totalTaxableIncome - 43906.01;
+                if(totalTaxableIncome > 87813.01)
+                {
+                    provincialTax = 87813 * (9.15/100);
+                    totalTaxableIncome = totalTaxableIncome - 87813.01;
+                    if (totalTaxableIncome > 150000.01)
+                    {
+                        provincialTax = 150000 * (11.16/100);
+                        totalTaxableIncome = totalTaxableIncome - 150000.01;
+                        if(totalTaxableIncome > 220000.01)
+                        {
+                            provincialTax = 220000 * (12.16/100);
+                            totalTaxableIncome = totalTaxableIncome - 220000.01;
+                        }
+                    }
+                }
+            }
+        } else {
+
+        }
+*/
+
         return provincialTax;
     }
 

@@ -57,6 +57,7 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
     @BindView(R.id.txtRRSP)
     TextView textViewRRSP;
     @BindView(R.id.radioGroup) RadioGroup radioGroup;
+    RadioButton rb;
     int age;
     Date birthDate;
     CRACustomer customerData;
@@ -75,7 +76,21 @@ public class PersonInformationEntryActivity extends AppCompatActivity {
     public void onRadioButtonClicked(){
 
         int radioId = radioGroup.getCheckedRadioButtonId();
+        rb = findViewById(radioId);
 
+        switch (radioId){
+            case R.id.radioButtonMale:
+                customerData.setGender("Male");
+                break;
+
+            case R.id.radioButtonFemale:
+                customerData.setGender("Female");
+                break;
+
+            case R.id.radioButtonOther:
+                customerData.setGender("Other");
+                break;
+        }
 
     }
 
