@@ -149,10 +149,9 @@ public class TaxCredentialActivity extends AppCompatActivity {
                             textViewDate.getText().toString(),
                             Double.parseDouble(textViewGrossIncome.getText().toString()),
                             Double.parseDouble(textViewRRSP.getText().toString()),gender,age);
-                    Bundle myBundle = new Bundle();
-                    myBundle.putSerializable("myBundle", (Serializable) customerData);
+
                     Intent mIntent = new Intent(TaxCredentialActivity.this, TaxDetailActivity.class);
-                    mIntent.putExtra("customerObject", myBundle);
+                    mIntent.putExtra("customerObject", customerData);
                     startActivity(mIntent);
                 }
             });

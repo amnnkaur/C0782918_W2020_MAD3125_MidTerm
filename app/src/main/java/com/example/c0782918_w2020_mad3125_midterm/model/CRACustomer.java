@@ -1,6 +1,8 @@
 package com.example.c0782918_w2020_mad3125_midterm.model;
 
 import android.os.Build;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import androidx.annotation.RequiresApi;
 
@@ -11,7 +13,7 @@ import java.util.Date;
 
 
 
-public class CRACustomer implements Serializable {
+public class CRACustomer implements Parcelable {
     public String personSINNumber;
     public String firstName;
     public String lastName;
@@ -55,6 +57,38 @@ public class CRACustomer implements Serializable {
         this.totalTaxableIncome = totalTaxableIncome;
         this.totalTaxPayed = totalTaxPayed;
     }
+
+    protected CRACustomer(Parcel in) {
+        personSINNumber = in.readString();
+        firstName = in.readString();
+        lastName = in.readString();
+        fullName = in.readString();
+        birthDate = in.readString();
+        gender = in.readString();
+        age = in.readInt();
+        grossIncome = in.readDouble();
+        federalTax = in.readDouble();
+        provincialTax = in.readDouble();
+        cpp = in.readDouble();
+        ei = in.readDouble();
+        rrspContributed = in.readDouble();
+        carryForwardRRSP = in.readDouble();
+        maxRRSP = in.readDouble();
+        totalTaxableIncome = in.readDouble();
+        totalTaxPayed = in.readDouble();
+    }
+
+    public static final Creator<CRACustomer> CREATOR = new Creator<CRACustomer>() {
+        @Override
+        public CRACustomer createFromParcel(Parcel in) {
+            return new CRACustomer(in);
+        }
+
+        @Override
+        public CRACustomer[] newArray(int size) {
+            return new CRACustomer[size];
+        }
+    };
 
     public String getPersonSINNumber() {
         return personSINNumber;
@@ -135,7 +169,7 @@ public class CRACustomer implements Serializable {
     }
 
     public double getFederalTax() {
-        
+
         this.federalTax = federalTaxCalculate();
         this.federalTax = Double.valueOf(df.format(federalTax));
         return federalTax;
@@ -353,4 +387,29 @@ public class CRACustomer implements Serializable {
         return calculatedEI;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(personSINNumber);
+        dest.writeString(firstName);
+        dest.writeString(lastName);
+        dest.writeString(fullName);
+        dest.writeString(birthDate);
+        dest.writeString(gender);
+        dest.writeInt(age);
+        dest.writeDouble(grossIncome);
+        dest.writeDouble(federalTax);
+        dest.writeDouble(provincialTax);
+        dest.writeDouble(cpp);
+        dest.writeDouble(ei);
+        dest.writeDouble(rrspContributed);
+        dest.writeDouble(carryForwardRRSP);
+        dest.writeDouble(maxRRSP);
+        dest.writeDouble(totalTaxableIncome);
+        dest.writeDouble(totalTaxPayed);
+    }
 }
