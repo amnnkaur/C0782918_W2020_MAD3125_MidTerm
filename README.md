@@ -4,6 +4,10 @@
 
 ## Output:
 
+|Screen|Description|
+|------|-----------|
+|<img src="https://gifyu.com/image/lNH0" alt="splash"/> | Splash screen.
+
 ## References:
 https://www.journaldev.com/9976/android-date-time-picker-dialog
 
@@ -16,3 +20,5 @@ https://stackoverflow.com/questions/20082855/regular-expression-for-canadian-sin
 https://guides.codepath.com/android/using-parcelable
 
 https://www.androidhive.info/2017/10/android-working-with-butterknife-viewbinding-library/
+
+
